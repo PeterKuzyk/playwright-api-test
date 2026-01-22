@@ -1,12 +1,16 @@
 import {test, expect, request} from '@playwright/test';
-import * as https from "node:https";
+import path from 'path';
+import tags from '../test-data/tags.json'
 
 test.beforeEach(async ({page}) => {
+    // create a mock
+    await page.route('*/**/api/tags', async route => {
+        await route.fulfill({
+            body: JSON.stringify(tags),
+        })
+    })
     await page.goto('https://conduit.bondaracademy.com/');
-    await page.getByText('Sign in').click();
-    await page.getByPlaceholder('Email').fill('peterTest@test.com');
-    await page.getByPlaceholder('Password').fill("12345678");
-    await page.getByRole('button', {name: 'Sign in'}).click();
+
 });
 
 test('create article and delete it using intercept', async ({page, request}) => {
