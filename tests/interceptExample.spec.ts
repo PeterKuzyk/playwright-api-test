@@ -1,5 +1,4 @@
 import {test, expect, request} from '@playwright/test';
-import path from 'path';
 import tags from '../test-data/tags.json'
 
 test.beforeEach(async ({page}) => {
