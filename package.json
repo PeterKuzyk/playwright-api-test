@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "intercept-example-chrome": "npx playwright test tests/interceptExample.spec.ts --project=chromium",
+    "intercept-example-firefox": "npx playwright test tests/interceptExample.spec.ts --project=firefox",
+    "intercept-example-all": "npm run intercept-example-chrome && npm run intercept-example-firefox"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PeterKuzyk/playwright-api-test.git"
@@ -17,6 +21,7 @@
   },
   "homepage": "https://github.com/PeterKuzyk/playwright-api-test#readme",
   "devDependencies": {
+    "@faker-js/faker": "^10.2.0",
     "@playwright/test": "^1.55.1",
     "@types/node": "^24.5.2"
   }

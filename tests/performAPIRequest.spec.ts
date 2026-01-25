@@ -1,7 +1,6 @@
 import {test, expect, request} from '@playwright/test';
 import tags from '../test-data/tags.json'
 
-
 test.beforeEach(async ({page}) => {
     // create a mock
     await page.route('*/**/api/tags', async route => {
